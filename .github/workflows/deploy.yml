@@ -1,12 +1,14 @@
 name:  Deploy VPS
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Build Docker Image"]
+    types: [completed]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name:  Pull & Run VPS
       uses: appleboy/ssh-action@v1.0.3
@@ -15,8 +17,11 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         password: ${{ secrets.VPS_PASSWORD }}
         script: |
-          # Pull nouvelle image
-          docker pull ghcr.io/${{ github.repository_owner }}/concordiasite:latest
+          # Image à déployer (commit SHA du workflow Docker)
+          IMAGE="ghcr.io/${{ github.repository_owner }}/concordiasite:${{ github.event.workflow_run.head_sha }}"
+
+          # Pull de la bonne version construite
+          docker pull "$IMAGE"
           
           # Restart container
           docker stop vitrine || true
@@ -27,6 +32,6 @@ jobs:
             --name vitrine \
             --restart unless-stopped \
             -p 8080:80 \
-            ghcr.io/${{ github.repository_owner }}/concordiasite:latest
+            "$IMAGE"
           
           docker ps | grep vitrine
