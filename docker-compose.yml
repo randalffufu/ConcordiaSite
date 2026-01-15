@@ -1,0 +1,65 @@
+services:
+  # Site vitrine (8080)
+  vitrine:
+    image: nginx:alpine
+    container_name: site-vitrine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./vitrine:/usr/share/nginx/html:ro
+    restart: unless-stopped
+
+  # Wiki.js OFFICIEL v2 + PostgreSQL
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    container_name: wiki-js
+    ports:
+      - "8082:3000"
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=wiki-db
+      - DB_PORT=5432
+      - DB_NAME=wikijs
+      - DB_USER=wikijs
+      - DB_PASS=wikijsrocks123456
+    volumes:
+      - wiki-data:/wiki/data
+    depends_on:
+      - wiki-db
+    restart: unless-stopped
+
+  wiki-db:
+    image: postgres:15-alpine
+    container_name: wiki-db
+    environment:
+      - POSTGRES_DB=wikijs
+      - POSTGRES_PASSWORD=wikijsrocks123456
+      - POSTGRES_USER=wikijs
+    volumes:
+      - wiki-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Panel Nginx Admin (81)
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: npm-admin
+    restart: unless-stopped
+    ports:
+      - '80:80'      # HTTP
+      - '443:443'    # HTTPS
+      - '81:81'      # Admin panel
+    environment:
+      DB_SQLITE_FILE: /data/database.sqlite
+      DISABLE_IPV6: 'true'
+    volumes:
+      - npm-data:/data
+      - npm-letsencrypt:/etc/letsencrypt
+    depends_on:
+      - vitrine
+      - wiki
+
+volumes:
+  wiki-data:
+  wiki-db-data:
+  npm-data:
+  npm-letsencrypt:

@@ -1,0 +1,20 @@
+name: Deploy test VPS
+
+on: [push, workflow_dispatch]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy VPS
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          cd /home/debian/asso-stack
+          sudo docker compose pull
+          sudo docker compose up -d
