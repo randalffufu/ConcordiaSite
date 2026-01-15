@@ -1,20 +1,31 @@
-name: Deploy test VPS
+name:  Deploy VPS
 
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:  # Manuel ou après docker.yml
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Deploy VPS
+    - name:  Pull & Run VPS
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         password: ${{ secrets.VPS_PASSWORD }}
         script: |
-          cd /home/debian/asso-stack
-          sudo docker compose pull
-          sudo docker compose up -d
+          # Pull nouvelle image
+          docker pull ghcr.io/${{ github.repository_owner }}/concordia-site:latest
+          
+          # Restart container
+          docker stop vitrine || true
+          docker rm vitrine || true
+          
+          # Run nouvelle version
+          docker run -d \
+            --name vitrine \
+            --restart unless-stopped \
+            -p 8080:80 \
+            ghcr.io/${{ github.repository_owner }}/concordia-site:latest
+          
+          docker ps | grep vitrine
