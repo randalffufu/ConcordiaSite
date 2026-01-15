@@ -1,7 +1,8 @@
 name:  Deploy VPS
 
 on:
-  workflow_dispatch:  # Manuel ou après docker.yml
+  push:
+    branches: [ main ]
 
 jobs:
   deploy:
