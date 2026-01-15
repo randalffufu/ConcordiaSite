@@ -15,7 +15,7 @@ jobs:
         password: ${{ secrets.VPS_PASSWORD }}
         script: |
           # Pull nouvelle image
-          docker pull ghcr.io/${{ github.repository_owner }}/ConcordiaSite:latest
+          docker pull ghcr.io/${{ github.repository_owner }}/concordiasite:latest
           
           # Restart container
           docker stop vitrine || true
@@ -26,6 +26,6 @@ jobs:
             --name vitrine \
             --restart unless-stopped \
             -p 8080:80 \
-            ghcr.io/${{ github.repository_owner }}/ConcordiaSite:latest
+            ghcr.io/${{ github.repository_owner }}/concordiasite:latest
           
           docker ps | grep vitrine
