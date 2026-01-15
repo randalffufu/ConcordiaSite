@@ -43,7 +43,20 @@ a{ color:inherit; text-decoration:none }
 .footer-content{ display:flex; flex-direction:column; gap:12px }
 .footer-brand{ font-family:'Oswald',sans-serif; font-size:1.5rem; font-weight:700; letter-spacing:5px; background:linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text }
 .footer-text{ color:var(--gray); letter-spacing:2px; font-size:0.95rem }
+.footer-links{ margin-top:8px; font-size:0.9rem }
+.footer-links a{ color:var(--gray); transition:color 0.3s ease }
+.footer-links a:hover{ color:var(--orange) }
 .footer-copy{ color:var(--gray); font-size:0.85rem; margin-top:8px }
+.legal-content{ background:var(--black) }
+.legal-text{ max-width:900px; margin:0 auto; color:var(--gray-light); line-height:1.8 }
+.legal-text h2{ font-family:'Oswald',sans-serif; font-size:1.5rem; font-weight:700; letter-spacing:2px; margin-top:40px; margin-bottom:16px; color:var(--orange) }
+.legal-text h2:first-child{ margin-top:0 }
+.legal-text p{ margin-bottom:16px }
+.legal-text ul{ margin:16px 0; padding-left:32px }
+.legal-text li{ margin-bottom:12px }
+.legal-text strong{ color:var(--white) }
+.legal-text a{ color:var(--orange); font-weight:700 }
+.legal-text a:hover{ color:var(--yellow); text-decoration:underline }
 .photo-banner{ position:relative; height:400px; background:linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.8) 100%), url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80') center/cover; display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.1) }
 .banner-overlay{ text-align:center }
 .banner-title{ font-family:'Oswald',sans-serif; font-size:2.5rem; font-weight:700; letter-spacing:6px; text-shadow:2px 2px 12px rgba(0,0,0,0.9); background:linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text }
