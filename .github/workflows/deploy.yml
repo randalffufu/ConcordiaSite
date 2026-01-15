@@ -23,15 +23,20 @@ jobs:
           # Pull de la bonne version construite
           docker pull "$IMAGE"
           
+          # Détecter le réseau du Nginx Proxy Manager (npm-admin)
+          NET=$(docker inspect npm-admin --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}}{{end}}')
+          echo "Network détecté pour npm-admin: $NET"
+
           # Restart container
-          docker stop vitrine || true
-          docker rm vitrine || true
+          docker stop site-vitrine || true
+          docker rm site-vitrine || true
           
           # Run nouvelle version
           docker run -d \
-            --name vitrine \
+            --name site-vitrine \
             --restart unless-stopped \
+            --network "$NET" \
             -p 8080:80 \
             "$IMAGE"
           
-          docker ps | grep vitrine
+          docker ps | grep site-vitrine
