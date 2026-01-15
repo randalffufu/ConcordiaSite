@@ -3,24 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Concordia - Association Événementielle</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
+</head>
+<body>
+    <header>
+        <h1>🎉 Concordia</h1>
+        <p>Association Événementielle de la Creuse</p>
+        <div class="location">📍 Creuse, Nouvelle-Aquitaine</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="pages/evenements.html">Événements</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section about">
+            <h2>À Propos</h2>
+            <p>
+                Bienvenue chez <strong>Concordia</strong>, votre association événementielle locale basée dans la Creuse.
+                Nous créons des moments inoubliables et rassemblons les communautés à travers des événements uniques et mémorables.
+            </p>
+            <p>
+                De l'organisation de concerts à la gestion de festivals locaux, nous mettons notre passion et notre expertise
+                au service de votre événement pour en faire un succès retentissant.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Nos Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>🎪 Festivals</h3>
+                    <p>Organisation complète de festivals culturels, musicaux et artistiques adaptés à votre territoire.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎵 Concerts</h3>
+                    <p>Programmation et coordination de concerts pour tous les styles musicaux et tous les publics.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎨 Événements Culturels</h3>
+                    <p>Création d'événements culturels innovants : expositions, spectacles, animations locales.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🤝 Team Building</h3>
+                    <p>Activités de cohésion d'équipe et événements d'entreprise personnalisés.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎉 Événements Privés</h3>
+                    <p>Accompagnement sur-mesure pour vos célébrations privées et moments spéciaux.</p>
+                </div>
+                <div class="service-card">
+                    <h3>📢 Communication</h3>
+                    <p>Stratégie de communication et promotion de vos événements sur tous les canaux.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact">
+            <h2>Contactez-nous</h2>
+            <div class="contact-info">
+                <p>📧 Email : <a href="mailto:contact@concordia-creuse.fr">contact@concordia-creuse.fr</a></p>
+                <p>📱 Téléphone : <a href="tel:+33555000000">05 55 00 00 00</a></p>
+                <p style="margin-top: 30px; font-size: 0.95em;">
+                    Ensemble, créons des événements qui marquent les esprits !
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Concordia - Association Événementielle</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Creuse, Nouvelle-Aquitaine, France</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>     
+       padding: 80px 20px;
             text-align: center;
-        }
+
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
