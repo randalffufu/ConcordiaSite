@@ -1,34 +1,46 @@
-:root { --bg:#f7f8fb; --surface:#ffffff; --text:#1b1f24; --muted:#5b6472; --primary:#1f5bff; --primary-700:#1540b3; --accent:#ff5c45; --border:#e6e8ee; --shadow:0 10px 30px rgba(16,24,40,0.08); --radius:14px; }
-*{ box-sizing:border-box }
-html,body{ height:100% }
-body{ margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.6 }
-.container{ width:100%; max-width:1100px; margin:0 auto; padding:0 24px }
-.site-header{ position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); box-shadow:var(--shadow) }
-.header-wrap{ display:grid; grid-template-columns:1fr auto; align-items:center; gap:24px; padding:16px 0 }
-.brand{ display:flex; flex-direction:column; gap:2px }
-.logo{ font-weight:700; font-size:1.25rem; letter-spacing:.2px }
-.tagline{ color:var(--muted); font-size:.9rem }
-.nav{ display:flex; gap:20px }
-.nav-link{ color:var(--text); text-decoration:none; font-weight:500; padding:8px 12px; border-radius:8px }
-.nav-link:hover{ background:var(--bg) }
-.nav-link.active{ color:var(--primary) }
-.hero{ background:linear-gradient(180deg,#f4f6ff 0%,#fff 100%); border-bottom:1px solid var(--border) }
-.hero-content{ padding:60px 0 }
-.hero-title{ font-size:2.2rem; line-height:1.2; margin:0 0 12px }
-.hero-subtitle{ color:var(--muted); max-width:800px }
-.section{ padding:56px 0 }
-.section h2{ font-size:1.6rem; margin:0 0 18px }
-.lead{ display:grid; gap:12px; color:var(--muted) }
-.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px }
-.card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease }
-.card:hover{ transform:translateY(-2px); box-shadow:0 12px 34px rgba(16,24,40,.12) }
-.card h3{ margin:0 0 8px; font-size:1.1rem }
-.card p{ margin:0; color:var(--muted) }
-.contact-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:center }
-.contact-item{ margin-bottom:8px }
-.btn{ display:inline-block; padding:10px 16px; background:var(--primary); color:#fff; text-decoration:none; border-radius:10px; box-shadow:var(--shadow); font-weight:600 }
-.btn:hover{ background:var(--primary-700) }
-.site-footer{ background:var(--surface); border-top:1px solid var(--border) }
-.footer-wrap{ display:flex; justify-content:space-between; align-items:center; padding:18px 0; color:var(--muted) }
-@media (max-width:960px){ .cards{ grid-template-columns:repeat(2,1fr) } .contact-grid{ grid-template-columns:1fr } }
-@media (max-width:640px){ .header-wrap{ grid-template-columns:1fr } .nav{ flex-wrap:wrap } .hero-content{ padding:40px 0 } .cards{ grid-template-columns:1fr } }
+:root{ --black:#0a0a0a; --dark:#1a1a1a; --red:#c41e3a; --red-hover:#a0182e; --white:#ffffff; --gray:#a0a0a0; --gray-light:#d0d0d0 }
+*{ margin:0; padding:0; box-sizing:border-box }
+html,body{ height:100%; background:var(--black); color:var(--white); font-family:'Roboto Condensed',sans-serif; line-height:1.6 }
+a{ color:inherit; text-decoration:none }
+.container{ max-width:1200px; margin:0 auto; padding:0 32px }
+.site-header{ position:sticky; top:0; z-index:100; background:rgba(10,10,10,0.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.1) }
+.header-inner{ display:flex; justify-content:space-between; align-items:center; padding:20px 32px }
+.logo{ font-family:'Oswald',sans-serif; font-size:1.8rem; font-weight:700; letter-spacing:4px }
+.nav{ display:flex; gap:32px }
+.nav-link{ font-size:0.95rem; font-weight:400; letter-spacing:2px; padding:8px 0; border-bottom:2px solid transparent; transition:border-color 0.3s ease }
+.nav-link:hover{ border-color:var(--red) }
+.hero{ position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.9) 100%), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1920&q=80') center/cover; border-bottom:1px solid rgba(255,255,255,0.1) }
+.hero-content{ padding:80px 20px }
+.hero-date{ font-size:1.2rem; letter-spacing:8px; color:var(--gray-light); margin-bottom:20px }
+.hero-title{ font-family:'Oswald',sans-serif; font-size:3rem; font-weight:700; letter-spacing:8px; line-height:1.3; margin-bottom:24px; text-shadow:2px 2px 8px rgba(0,0,0,0.8) }
+.hero-location{ font-size:1.1rem; letter-spacing:6px; color:var(--gray); margin-bottom:40px }
+.hero-actions{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap }
+.btn-hero{ display:inline-block; padding:14px 32px; background:var(--red); color:var(--white); font-weight:700; letter-spacing:2px; border:2px solid var(--red); transition:all 0.3s ease }
+.btn-hero:hover{ background:var(--red-hover); border-color:var(--red-hover) }
+.btn-hero-outline{ background:transparent; border:2px solid var(--white) }
+.btn-hero-outline:hover{ background:var(--white); color:var(--black); border-color:var(--white) }
+.section{ padding:80px 0; border-bottom:1px solid rgba(255,255,255,0.05) }
+.section-title{ font-family:'Oswald',sans-serif; font-size:2rem; font-weight:700; letter-spacing:8px; text-align:center; margin-bottom:48px; color:var(--white) }
+.section-content{ max-width:900px; margin:0 auto; text-align:center; font-size:1.1rem; line-height:1.8; color:var(--gray-light) }
+.section-content p{ margin-bottom:20px }
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px }
+.card{ background:var(--dark); border:1px solid rgba(255,255,255,0.1); padding:32px 24px; transition:all 0.3s ease }
+.card:hover{ border-color:var(--red); transform:translateY(-4px) }
+.card h3{ font-family:'Oswald',sans-serif; font-size:1.3rem; font-weight:700; letter-spacing:3px; margin-bottom:16px; color:var(--white) }
+.card p{ color:var(--gray); line-height:1.6 }
+.contact-content{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1000px; margin:0 auto }
+.contact-info{ font-size:1.1rem; letter-spacing:1px }
+.contact-item{ margin-bottom:16px }
+.contact-item a{ color:var(--red); font-weight:700 }
+.contact-item a:hover{ text-decoration:underline }
+.contact-cta{ text-align:center }
+.contact-cta p{ font-size:1.3rem; margin-bottom:24px; color:var(--gray-light) }
+.btn-cta{ display:inline-block; padding:14px 40px; background:var(--red); color:var(--white); font-weight:700; letter-spacing:3px; border:2px solid var(--red); transition:all 0.3s ease }
+.btn-cta:hover{ background:var(--red-hover); border-color:var(--red-hover) }
+.site-footer{ background:var(--dark); border-top:1px solid rgba(255,255,255,0.1); padding:40px 0; text-align:center }
+.footer-content{ display:flex; flex-direction:column; gap:12px }
+.footer-brand{ font-family:'Oswald',sans-serif; font-size:1.5rem; font-weight:700; letter-spacing:5px }
+.footer-text{ color:var(--gray); letter-spacing:2px; font-size:0.95rem }
+.footer-copy{ color:var(--gray); font-size:0.85rem; margin-top:8px }
+@media (max-width:960px){ .cards{ grid-template-columns:repeat(2,1fr) } .contact-content{ grid-template-columns:1fr; gap:40px } }
+@media (max-width:640px){ .header-inner{ flex-direction:column; gap:16px } .nav{ flex-wrap:wrap; gap:16px } .hero-title{ font-size:2rem; letter-spacing:4px } .cards{ grid-template-columns:1fr } }
