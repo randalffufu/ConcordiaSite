@@ -8,16 +8,16 @@
   --dark: #6e7b53;
   
   /* Couleurs principales - orange et jaune (accent) */
-  --orange: #ff8c00;
-  --orange-hover: #e67e00;
+  --orange: #76ff06;
+  --orange-hover: #118c0b;
   --yellow: #ffd700;
   
-  /* Couleurs supplémentaires */
+  /* Couleurs supplémentaires - adaptées pour la lisibilité */
   --red: #c41e3a;
   --red-hover: #a0182e;
-  --white: #ffffff;
-  --gray: #a0a0a0;
-  --gray-light: #d0d0d0;
+  --white: #1a1a1a;
+  --gray: #4a4a4a;
+  --gray-light: #6b6b6b;
 }
 
 /* =====================================
@@ -62,7 +62,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(240, 227, 174, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -145,6 +145,7 @@ a {
   line-height: 1.3;
   margin-bottom: 24px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: #ffffff;
 }
 
 .hero-location {
@@ -185,8 +186,8 @@ a {
 /* Bouton blanc (variante contours) */
 .btn-hero-outline {
   background: transparent;
-  border: 2px solid var(--white);
-  color: var(--white);
+  border: 2px solid #ffffff;
+  color: #ffffff;
 }
 
 .btn-hero-outline:hover {
@@ -226,7 +227,7 @@ a {
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--gray-light);
+  color: #4a4a4a;
 }
 
 .section-content p {
@@ -283,11 +284,11 @@ a {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 16px;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .card p {
-  color: var(--gray);
+  color: #e8e8e8;
   line-height: 1.6;
 }
 
@@ -539,18 +540,18 @@ a {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 12px;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .event-location {
-  color: var(--orange);
+  color: #ffffff;
   font-weight: 700;
   margin-bottom: 12px;
   font-size: 0.95rem;
 }
 
 .event-desc {
-  color: var(--gray-light);
+  color: #e8e8e8;
   line-height: 1.6;
   margin-bottom: 16px;
   flex: 1;
@@ -697,6 +698,7 @@ a {
 .contact-info {
   font-size: 1.1rem;
   letter-spacing: 1px;
+  color: #3a3a3a;
 }
 
 .contact-item {
@@ -720,7 +722,7 @@ a {
 .contact-cta p {
   font-size: 1.3rem;
   margin-bottom: 24px;
-  color: var(--gray-light);
+  color: #3a3a3a;
 }
 
 .btn-cta {
