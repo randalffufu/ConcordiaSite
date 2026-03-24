@@ -1019,7 +1019,8 @@ a {
 
   .gallery-label {
     font-size: 1rem;
-=======
+  }
+
   /* Stats : 1 colonne */
   .stats-grid {
     grid-template-columns: 1fr;
@@ -1036,6 +1037,5 @@ a {
   .page-hero-title {
     font-size: 2rem;
     letter-spacing: 4px;
->>>>>>> f416f1dc9d0e1f3f96f83a6e9e488c61d0eb37c4
   }
 }
