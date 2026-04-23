@@ -1,39 +1,5 @@
 // Scripts pour l'Association Concordia
 
-const themeToggleButton = document.getElementById('themeToggle');
-const rootElement = document.documentElement;
-const storageThemeKey = 'concordia-theme';
-
-function setTheme(theme) {
-    rootElement.setAttribute('data-theme', theme);
-    if (themeToggleButton) {
-        themeToggleButton.textContent = theme === 'light' ? ' Clair' : 'Sombre';
-        themeToggleButton.setAttribute('aria-label', theme === 'light' ? 'Activer le mode sombre' : 'Activer le mode clair');
-    }
-}
-
-function initializeTheme() {
-    const savedTheme = localStorage.getItem(storageThemeKey);
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-        setTheme(savedTheme);
-        return;
-    }
-
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    setTheme(prefersLight ? 'light' : 'dark');
-}
-
-initializeTheme();
-
-if (themeToggleButton) {
-    themeToggleButton.addEventListener('click', () => {
-        const currentTheme = rootElement.getAttribute('data-theme') || 'dark';
-        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(nextTheme);
-        localStorage.setItem(storageThemeKey, nextTheme);
-    });
-}
-
 // Smooth scroll pour les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
