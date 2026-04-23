@@ -1,5 +1,5 @@
 services:
-  # Site vitrine (8080)
+  # Site vitrine
   vitrine:
     image: nginx:alpine
     container_name: site-vitrine
@@ -8,6 +8,8 @@ services:
     volumes:
       - ./vitrine:/usr/share/nginx/html:ro
     restart: unless-stopped
+    networks:
+      - proxy-net
 
   # Wiki.js OFFICIEL v2 + PostgreSQL
   wiki:
@@ -16,50 +18,62 @@ services:
     ports:
       - "8082:3000"
     environment:
-      - DB_TYPE=postgres
-      - DB_HOST=wiki-db
-      - DB_PORT=5432
-      - DB_NAME=wikijs
-      - DB_USER=wikijs
-      - DB_PASS=wikijsrocks123456
+      DB_TYPE: postgres
+      DB_HOST: wiki-db
+      DB_PORT: 5432
+      DB_NAME: wikijs
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks123456
     volumes:
       - wiki-data:/wiki/data
     depends_on:
       - wiki-db
     restart: unless-stopped
+    networks:
+      - proxy-net
+      - wiki-internal
 
   wiki-db:
     image: postgres:15-alpine
     container_name: wiki-db
     environment:
-      - POSTGRES_DB=wikijs
-      - POSTGRES_PASSWORD=wikijsrocks123456
-      - POSTGRES_USER=wikijs
+      POSTGRES_DB: wikijs
+      POSTGRES_PASSWORD: wikijsrocks123456
+      POSTGRES_USER: wikijs
     volumes:
       - wiki-db-data:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - wiki-internal
 
-  # Panel Nginx Admin (81)
+  # Panel Nginx Proxy Manager
   npm:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:latest
     container_name: npm-admin
     restart: unless-stopped
     ports:
-      - '80:80'      # HTTP
-      - '443:443'    # HTTPS
-      - '81:81'      # Admin panel
+      - "80:80"
+      - "443:443"
+      - "81:81"
     environment:
       DB_SQLITE_FILE: /data/database.sqlite
-      DISABLE_IPV6: 'true'
+      DISABLE_IPV6: "true"
     volumes:
       - npm-data:/data
       - npm-letsencrypt:/etc/letsencrypt
-    depends_on:
-      - vitrine
-      - wiki
+    networks:
+      - proxy-net
 
 volumes:
   wiki-data:
   wiki-db-data:
   npm-data:
   npm-letsencrypt:
+
+networks:
+  proxy-net:
+    external: true
+    name: proxy-net
+  wiki-internal:
+    name: wiki-internal
+    internal: true

@@ -1,4 +1,4 @@
-name:  Deploy VPS
+name: Deploy VPS
 
 on:
   workflow_run:
@@ -10,33 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-    - name:  Pull & Run VPS
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        password: ${{ secrets.VPS_PASSWORD }}
-        script: |
-          # Image à déployer (commit SHA du workflow Docker)
-          IMAGE="ghcr.io/${{ github.repository_owner }}/concordiasite:${{ github.event.workflow_run.head_sha }}"
+      - name: Pull & Run VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            IMAGE="ghcr.io/${{ github.repository_owner }}/concordiasite:${{ github.event.workflow_run.head_sha }}"
+            NET="proxy-net"
 
-          # Pull de la bonne version construite
-          docker pull "$IMAGE"
-          
-          # Détecter le réseau du Nginx Proxy Manager (npm-admin)
-          NET=$(docker inspect npm-admin --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}}{{end}}')
-          echo "Network détecté pour npm-admin: $NET"
+            docker network inspect "$NET" >/dev/null 2>&1 || docker network create "$NET"
 
-          # Restart container
-          docker stop site-vitrine || true
-          docker rm site-vitrine || true
-          
-          # Run nouvelle version
-          docker run -d \
-            --name site-vitrine \
-            --restart unless-stopped \
-            --network "$NET" \
-            -p 8080:80 \
-            "$IMAGE"
-          
-          docker ps | grep site-vitrine
+            docker pull "$IMAGE"
+
+            docker stop site-vitrine || true
+            docker rm site-vitrine || true
+
+            docker run -d \
+              --name site-vitrine \
+              --restart unless-stopped \
+              --network "$NET" \
+              -p 8080:80 \
+              "$IMAGE"
+
+            docker ps | grep site-vitrine
