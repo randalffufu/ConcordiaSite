@@ -31,7 +31,7 @@ function fixLinkPaths(basePath) {
   // Corriger la source de l'image du logo selon la page courante
   const logoImage = document.querySelector('.logo-mark');
   if (logoImage) {
-    logoImage.setAttribute('src', `${basePath}images/concordia%20logo%20carr%C3%A9-03.png`);
+    logoImage.setAttribute('src', `${basePath}image/concordia%20logo%20carr%C3%A9-03.png`);
   }
 }
 

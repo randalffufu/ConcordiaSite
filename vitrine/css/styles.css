@@ -162,7 +162,7 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/images/Festitrap2Concert.jpg') center/cover;
+  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/image/Festitrap2Concert.jpg') center/cover;
   border-bottom: 2px solid rgba(244, 196, 160, 0.25);
 }
 
@@ -354,7 +354,7 @@ a {
 .photo-banner {
   position: relative;
   height: 450px;
-  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/images/DragNanaRose.JPG') center 20%/cover;
+  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/image/DragNanaRose.JPG') center 20%/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -612,7 +612,7 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/images/Festitrap2.jpg') center 30%/cover;
+  background: linear-gradient(180deg, rgba(245, 239, 229, 0.5) 0%, rgba(245, 239, 229, 0.7) 100%), url('/vitrine/image/Festitrap2.jpg') center 30%/cover;
   border-bottom: 2px solid rgba(184, 216, 232, 0.25);
 }
 
@@ -1173,17 +1173,17 @@ html[data-theme="light"] .theme-toggle {
 }
 
 html[data-theme="light"] .hero {
-  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/images/DragNanaRose.JPG') center/cover;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/image/DragNanaRose.JPG') center/cover;
   border-bottom: 2px solid rgba(244, 196, 160, 0.3);
 }
 
 html[data-theme="light"] .photo-banner {
-  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/images/DragNanaRose.JPG') center/cover;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/image/DragNanaRose.JPG') center/cover;
   border-bottom: 2px solid rgba(244, 196, 160, 0.3);
 }
 
 html[data-theme="light"] .page-hero {
-  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/images/DragNanaRose.JPG') center/cover;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.3) 0%, rgba(250, 248, 244, 0.6) 100%), url('/vitrine/image/DragNanaRose.JPG') center/cover;
   border-bottom: 2px solid rgba(244, 196, 160, 0.35);
 }
 
