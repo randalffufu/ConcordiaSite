@@ -12,6 +12,7 @@ function applyMatomoConsent(consent) {
     const paq = window._paq = window._paq || [];
 
     if (consent === 'accepted') {
+        paq.push(['setAnonymizeIp', true]);
         paq.push(['setConsentGiven']);
         paq.push(['rememberConsentGiven']);
         return;
@@ -19,6 +20,12 @@ function applyMatomoConsent(consent) {
 
     paq.push(['forgetConsentGiven']);
     paq.push(['disableCookies']);
+}
+
+function reopenCookieBanner() {
+    localStorage.removeItem(cookieConsentStorageKey);
+    hideCookieBanner();
+    renderCookieBanner();
 }
 
 function hideCookieBanner() {
@@ -41,6 +48,7 @@ function renderCookieBanner() {
             <p class="cookie-banner-text">
                 Nous utilisons des cookies de mesure d'audience pour ameliorer le site.
                 Vous pouvez accepter ou refuser ce suivi.
+                Vous pouvez aussi retirer votre consentement à tout moment depuis le pied de page.
                 <a href="${getPrivacyPolicyPath()}">En savoir plus</a>
             </p>
             <div class="cookie-banner-actions">
@@ -82,6 +90,14 @@ function initializeCookieConsent() {
 
     renderCookieBanner();
 }
+
+document.addEventListener('click', (event) => {
+    const cookieSettingsButton = event.target.closest('[data-cookie-settings]');
+    if (cookieSettingsButton) {
+        event.preventDefault();
+        reopenCookieBanner();
+    }
+});
 
 // Smooth scroll pour les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
