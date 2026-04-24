@@ -506,7 +506,7 @@ a {
 }
 
 .contact-item a {
-  color: #b8d8e8;
+  color: #75bfe4;
   font-weight: 700;
   transition: color 0.3s ease;
 }
@@ -671,7 +671,7 @@ a {
   letter-spacing: 2px;
   margin-top: 48px;
   margin-bottom: 24px;
-  color: #b8d8e8;
+  color: #7bc4e9;
 }
 
 .legal-text h2:first-child {
@@ -843,7 +843,7 @@ a {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 8px;
-  color: #c8e5d5;
+  color: #71b4e0;
 }
 
 .contact-detail-item a {
@@ -901,7 +901,7 @@ a {
 }
 
 .btn-submit {
-  background: linear-gradient(135deg, #f4c4a0 0%, #d9a8b8 100%);
+  background: linear-gradient(135deg, #83654f 0%, #e0c3cd 100%);
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 2px;
