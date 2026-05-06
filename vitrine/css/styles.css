@@ -758,6 +758,59 @@ a {
   box-shadow: 0 16px 40px rgba(255, 140, 66, 0.25);
 }
 
+.event-date {
+  position: relative;
+  min-height: 190px;
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.event-date::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.18) 0%, rgba(15, 15, 15, 0.6) 100%);
+  z-index: -1;
+}
+
+.event-card--adels .event-date {
+  background: url('../image/DSC00973.JPG') center/cover;
+}
+
+.event-card--cabane .event-date {
+  background: url('../image/AfficheCABANE.png') center 85%/cover;
+}
+
+.event-card--festitrap .event-date {
+  background: url('../image/AfficheFESTITRAP3.png') center 30%/cover;
+}
+
+.event-card--reliques .event-date {
+  background: url('../image/affichereliques.png') center 80%/cover;
+}
+
+.event-day {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.event-month {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-top: var(--spacing-xs);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
 .event-content {
   padding: var(--spacing-xl);
   flex: 1;
