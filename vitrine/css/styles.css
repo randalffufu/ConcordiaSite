@@ -50,11 +50,12 @@ a {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(242, 236, 226, 0.97);
   backdrop-filter: blur(10px);
   border-bottom: 2px solid rgba(184, 216, 232, 0.38);
   box-shadow: 0 2px 12px rgba(58, 58, 58, 0.08);
+  overflow: visible;
 }
 
 .header-inner {
@@ -128,6 +129,37 @@ a {
   border-color: #d9a8b8;
   color: #d9a8b8;
   font-weight: 700;
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu span {
+  width: 24px;
+  height: 3px;
+  background: #3a3a3a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .theme-toggle {
@@ -1043,20 +1075,60 @@ a {
 
 @media (max-width: 768px) {
   .header-inner {
-    flex-direction: column;
-    gap: 18px;
-    padding: 18px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 16px 24px;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    order: 2;
+  }
+
+  .logo {
+    order: 1;
   }
 
   .nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(242, 236, 226, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
     width: 100%;
     text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 8px 16px rgba(58, 58, 58, 0.1);
+  }
+
+  .nav.active {
+    max-height: 300px;
+  }
+
+  .nav-link {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(184, 216, 232, 0.2);
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  .nav-link:last-of-type {
+    border-bottom: none;
   }
 
   .theme-toggle {
-    width: 100%;
+    width: auto;
+    margin-top: 12px;
   }
 
   .hero-title {
@@ -1241,6 +1313,14 @@ html[data-theme="light"] .site-header {
   background: rgba(250, 248, 244, 0.98);
   border-bottom: 2px solid rgba(212, 197, 226, 0.45);
   box-shadow: 0 3px 12px rgba(58, 58, 58, 0.1);
+}
+
+html[data-theme="light"] .hamburger-menu span {
+  background: #3a3a3a;
+}
+
+html[data-theme="light"] .nav {
+  background: rgba(250, 248, 244, 0.98);
 }
 
 html[data-theme="light"] .nav-link {

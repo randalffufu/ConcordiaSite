@@ -48,6 +48,7 @@ async function loadComponents() {
       headerPlaceholder.innerHTML = headerHTML;
       fixLinkPaths(basePath);
       initializeThemeToggle();
+      initializeHamburgerMenu();
       highlightCurrentPage();
     }
   } catch (error) {

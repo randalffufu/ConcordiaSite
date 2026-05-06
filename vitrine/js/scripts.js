@@ -2,6 +2,41 @@
 
 const cookieConsentStorageKey = 'concordia-cookie-consent';
 
+// ============= HAMBURGER MENU ============= 
+function initializeHamburgerMenu() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = navMenu ? navMenu.querySelectorAll('.nav-link') : [];
+
+    if (!hamburgerMenu || !navMenu) return;
+
+    // Toggle menu on hamburger click
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        hamburgerMenu.setAttribute('aria-expanded', 
+            hamburgerMenu.classList.contains('active') ? 'true' : 'false');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburgerMenu.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.site-header')) {
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+            hamburgerMenu.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 function getPrivacyPolicyPath() {
     return window.location.pathname.includes('/pages/')
         ? 'politique-confidentialite.html'
@@ -113,6 +148,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    initializeHamburgerMenu();
     initializeCookieConsent();
 });
 
