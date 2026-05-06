@@ -147,9 +147,79 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ============= HERO CAROUSEL ============= 
+function initializeHeroCarousel() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let autoPlayInterval;
+
+    if (slides.length === 0) return;
+
+    function showSlide(index) {
+        // Boucler si on dépasse
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+
+        // Retirer la classe active de tous les slides et dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Ajouter la classe active au slide et dot actuel
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide++;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide--;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        showSlide(currentSlide);
+    }
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 4000); // Change slide tous les 4 secondes
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    // Cliquer sur les dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetAutoPlay();
+        });
+    });
+
+    // Pause au survol, reprendre quand on part
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.addEventListener('mouseenter', stopAutoPlay);
+        hero.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Initialiser
+    showSlide(0);
+    startAutoPlay();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initializeHamburgerMenu();
     initializeCookieConsent();
+    initializeHeroCarousel();
 });
 
 // Animation au chargement de la page
