@@ -47,7 +47,6 @@ function applyMatomoConsent(consent) {
     const paq = window._paq = window._paq || [];
 
     if (consent === 'accepted') {
-        paq.push(['setAnonymizeIp', true]);
         paq.push(['setConsentGiven']);
         paq.push(['rememberConsentGiven']);
         return;
