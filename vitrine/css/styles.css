@@ -506,7 +506,7 @@ a {
 .photo-banner {
   position: relative;
   height: 450px;
-  background: linear-gradient(180deg, rgba(26, 58, 31, 0.6) 0%, rgba(13, 27, 15, 0.8) 100%), url('/image/LaNanaRose.JPG') center 20%/cover;
+  background: linear-gradient(180deg, rgba(26, 58, 31, 0.6) 0%, rgba(13, 27, 15, 0.8) 100%), url('../image/LaNanaRose.JPG') center 20%/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -738,7 +738,7 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(180deg, rgba(26, 58, 31, 0.6) 0%, rgba(13, 27, 15, 0.8) 100%), url('/image/Festitrap_2.jpg') center 30%/cover;
+  background: linear-gradient(180deg, rgba(26, 58, 31, 0.6) 0%, rgba(13, 27, 15, 0.8) 100%), url('../image/Festitrap_2.jpg') center 30%/cover;
   border-bottom: 3px solid rgba(74, 222, 128, 0.3);
 }
 
@@ -754,6 +754,14 @@ a {
   margin-bottom: var(--spacing-md);
   color: var(--white);
   text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+.page-hero-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: #d4e4cc;
+  margin-top: var(--spacing-md);
+  opacity: 0.85;
 }
 
 .legal-content {
@@ -1395,17 +1403,3 @@ a {
   }
 }
 
-/* ============= LIGHT THEME ============= */
-/* REMOVED - Only dark theme kept */
-
-html[data-theme="light"] .site-footer {
-  background: #f0e9df;
-  border-top: 2px solid rgba(184, 216, 232, 0.35);
-}
-
-html[data-theme="light"] .btn-hero,
-html[data-theme="light"] .btn-cta,
-html[data-theme="light"] .btn-submit {
-  color: #ffffff;
-  font-weight: 700;
-}
