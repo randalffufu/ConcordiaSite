@@ -80,7 +80,7 @@ function renderCookieBanner() {
     banner.innerHTML = `
         <div class="cookie-banner-content">
             <p class="cookie-banner-text">
-                Nous utilisons des cookies de mesure d'audience pour ameliorer le site.
+                Nous utilisons des cookies de mesure d'audience pour améliorer le site.
                 Vous pouvez accepter ou refuser ce suivi.
                 Vous pouvez aussi retirer votre consentement à tout moment depuis le pied de page.
                 <a href="${getPrivacyPolicyPath()}">En savoir plus</a>
@@ -156,29 +156,23 @@ function initializeHeroCarousel() {
     if (slides.length === 0) return;
 
     function showSlide(index) {
-        // Boucler si on dépasse
-        if (index >= slides.length) currentSlide = 0;
-        if (index < 0) currentSlide = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        if (index < 0) index = slides.length - 1;
+        currentSlide = index;
 
-        // Retirer la classe active de tous les slides et dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
 
-        // Ajouter la classe active au slide et dot actuel
         slides[currentSlide].classList.add('active');
         if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
 
     function nextSlide() {
-        currentSlide++;
-        if (currentSlide >= slides.length) currentSlide = 0;
-        showSlide(currentSlide);
+        showSlide(currentSlide + 1);
     }
 
     function prevSlide() {
-        currentSlide--;
-        if (currentSlide < 0) currentSlide = slides.length - 1;
-        showSlide(currentSlide);
+        showSlide(currentSlide - 1);
     }
 
     function startAutoPlay() {
@@ -210,15 +204,36 @@ function initializeHeroCarousel() {
         hero.addEventListener('mouseleave', startAutoPlay);
     }
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { prevSlide(); resetAutoPlay(); }
+        if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
+    });
+
     // Initialiser
     showSlide(0);
     startAutoPlay();
 }
 
+function initializeContactForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = form.querySelector('[name="name"]').value.trim();
+        const email = form.querySelector('[name="email"]').value.trim();
+        const subject = form.querySelector('[name="subject"]').value.trim();
+        const message = form.querySelector('[name="message"]').value.trim();
+
+        const body = `Nom : ${name}\nEmail : ${email}\n\n${message}`;
+        window.location.href = `mailto:concordia.asso23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    initializeHamburgerMenu();
     initializeCookieConsent();
     initializeHeroCarousel();
+    initializeContactForm();
 });
 
 // Animation au chargement de la page

@@ -33,6 +33,17 @@ function fixLinkPaths(basePath) {
   if (logoImage) {
     logoImage.setAttribute('src', `${basePath}image/concordia%20logo%20carr%C3%A9-03.png`);
   }
+
+  const footerLinks = document.querySelectorAll('.footer-links a[href^="/"]');
+  footerLinks.forEach(link => {
+    let href = link.getAttribute('href');
+    if (href === '/') {
+      link.setAttribute('href', basePath === './' ? './index.html' : '../index.html');
+    } else {
+      href = href.substring(1);
+      link.setAttribute('href', basePath + href);
+    }
+  });
 }
 
 // Charger et injecter les composants
