@@ -1140,7 +1140,6 @@ a {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 0.8rem;
   font-style: italic;
-  opacity: 0.85;
 }
 
 .ft4-slot__scene {
@@ -1148,7 +1147,6 @@ a {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.6;
 }
 
 /* Scène principale — jaune */
@@ -1161,9 +1159,12 @@ a {
   color: var(--yellow);
 }
 
-.ft4-slot--principale .ft4-slot__genre,
+.ft4-slot--principale .ft4-slot__genre {
+  color: rgba(245, 208, 64, 0.85);
+}
+
 .ft4-slot--principale .ft4-slot__scene {
-  color: var(--yellow);
+  color: rgba(245, 208, 64, 0.6);
 }
 
 /* Scène village — rose */
@@ -1176,9 +1177,12 @@ a {
   color: var(--pink);
 }
 
-.ft4-slot--village .ft4-slot__genre,
+.ft4-slot--village .ft4-slot__genre {
+  color: rgba(245, 165, 200, 0.85);
+}
+
 .ft4-slot--village .ft4-slot__scene {
-  color: var(--pink);
+  color: rgba(245, 165, 200, 0.6);
 }
 
 /* Autre (performance/espace) — blanc */
@@ -1199,6 +1203,12 @@ a {
 /* --- Cream section variant --- */
 .ft4-section--cream {
   background: var(--cream);
+}
+
+/* --- Surcharge margin du titre dans les sections ft4 --- */
+.ft4-prog-top__left .section-title,
+.ft4-presentation .section-title {
+  margin-bottom: 20px;
 }
 
 /* --- Présentation --- */
