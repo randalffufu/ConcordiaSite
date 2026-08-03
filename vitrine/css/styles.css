@@ -150,6 +150,17 @@ a {
   color: var(--yellow);
 }
 
+/* Mise en avant du festival en cours dans la nav */
+.nav-link--festival {
+  color: var(--yellow);
+  border-color: rgba(245, 208, 64, 0.4);
+}
+
+.nav-link--festival:hover,
+.nav-link--festival.active {
+  border-color: var(--yellow);
+}
+
 .hamburger-menu {
   display: none;
   flex-direction: column;
@@ -430,6 +441,10 @@ a {
   color: var(--text);
   line-height: 1.8;
   font-size: 1.05rem;
+}
+
+.card p + p {
+  margin-top: var(--spacing-md);
 }
 
 /* ============= GALLERY ============= */
@@ -870,6 +885,29 @@ a {
   transform: translateY(-3px);
 }
 
+.event-announcement__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.event-announcement__actions .event-announcement__cta {
+  margin-top: 0;
+}
+
+.event-announcement__cta--ghost {
+  background: transparent;
+  color: var(--yellow);
+  border: 3px solid var(--yellow);
+  padding: 9px 25px;
+}
+
+.event-announcement__cta--ghost:hover {
+  background: var(--yellow);
+  color: var(--purple-dark);
+}
+
 @media (max-width: 680px) {
   .event-announcement {
     padding: 28px 24px 32px;
@@ -893,7 +931,7 @@ a {
   justify-content: center;
   background:
     linear-gradient(160deg, rgba(245,165,200,0.82) 0%, rgba(245,180,104,0.82) 55%, rgba(245,208,64,0.82) 100%),
-    url('../image/AfficheFESTITRAP4.png') center top / cover no-repeat;
+    url('../image/afficheFESTITRAP4.jpeg') center top / cover no-repeat;
   border-bottom: 4px solid var(--purple);
   text-align: center;
 }
@@ -1295,7 +1333,285 @@ a {
   transform: translateY(-3px);
 }
 
+/* --- Horaires des trains --- */
+.ft4-section--trains {
+  background: var(--purple-dark);
+  border-top: 4px solid var(--yellow);
+}
+
+.ft4-section--trains .section-title {
+  margin-bottom: 20px;
+}
+
+.ft4-trains__intro {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--pink);
+  max-width: 720px;
+  margin: 0 0 36px;
+}
+
+.ft4-trains__intro strong {
+  color: var(--yellow);
+}
+
+.ft4-trains__intro a {
+  color: var(--yellow);
+  white-space: nowrap;
+}
+
+.ft4-trains {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.ft4-trains__dayname {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--purple-dark);
+  background: var(--yellow);
+  padding: 10px 16px;
+  margin: 0;
+}
+
+.ft4-trains__scroll {
+  overflow-x: auto;
+  border: 2px solid var(--yellow);
+  border-top: none;
+}
+
+.ft4-trains__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.92rem;
+}
+
+.ft4-trains__table th {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--pink);
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--purple-mid);
+  white-space: nowrap;
+}
+
+.ft4-trains__table td {
+  color: var(--white);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(245, 165, 200, 0.2);
+  white-space: nowrap;
+}
+
+.ft4-trains__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ft4-trains__row--shuttle td {
+  background: rgba(245, 208, 64, 0.1);
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.ft4-trains__flag {
+  display: inline-block;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple-dark);
+  background: var(--yellow);
+  padding: 3px 10px;
+}
+
+.ft4-trains__flag--no {
+  color: var(--pink);
+  background: transparent;
+  border: 1px solid var(--purple-mid);
+}
+
+.ft4-trains__note {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--purple-light);
+  max-width: 720px;
+  margin: 28px 0 0;
+}
+
+/* --- Appels bénévoles & matériaux --- */
+.ft4-section--appeals {
+  background: var(--pink);
+  border-top: 4px solid var(--purple);
+}
+
+.ft4-appeals__intro {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--purple-dark);
+  max-width: 620px;
+  margin: -8px 0 36px;
+}
+
+.ft4-appeals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.ft4-appeal {
+  background: var(--cream);
+  border: 3px solid var(--purple);
+  box-shadow: var(--shadow-lg);
+  padding: 32px 28px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ft4-appeal--alt {
+  background: var(--white);
+}
+
+.ft4-appeal__tag {
+  align-self: flex-start;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  background: var(--purple);
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.ft4-appeal__title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--purple);
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+}
+
+.ft4-appeal__lead {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 24px;
+}
+
+.ft4-appeal__subtitle {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+  margin: 0 0 12px;
+}
+
+.ft4-appeal__text {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.ft4-appeal__list,
+.ft4-appeal__perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+}
+
+.ft4-appeal__list li,
+.ft4-appeal__perks li {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+
+.ft4-appeal__list li::before,
+.ft4-appeal__perks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 9px;
+  height: 9px;
+  background: var(--yellow);
+  border: 2px solid var(--purple);
+}
+
+.ft4-appeal__perks li strong {
+  color: var(--purple);
+}
+
+.ft4-appeal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+}
+
+.ft4-appeal__chips li {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--purple-dark);
+  background: var(--yellow);
+  padding: 6px 14px;
+}
+
+.ft4-appeal__btn {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  background: var(--purple);
+  color: var(--yellow);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  padding: 15px 30px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.ft4-appeal__btn:hover {
+  background: var(--purple-dark);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.ft4-appeal__link {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.95rem;
+  color: var(--purple);
+  margin-top: 14px;
+  align-self: flex-start;
+}
+
+.ft4-appeal__link:hover {
+  color: var(--purple-dark);
+}
+
 @media (max-width: 860px) {
+  .ft4-appeals {
+    grid-template-columns: 1fr;
+  }
   .ft4-intro {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -1429,6 +1745,29 @@ a {
 .home-announcement__cta:hover {
   background: var(--purple-dark);
   transform: translateY(-3px);
+}
+
+.home-announcement__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.home-announcement__actions .home-announcement__cta {
+  margin-top: 0;
+}
+
+.home-announcement__cta--ghost {
+  background: transparent;
+  color: var(--purple);
+  border: 3px solid var(--purple);
+  padding: 10px 27px;
+}
+
+.home-announcement__cta--ghost:hover {
+  background: var(--purple);
+  color: var(--yellow);
 }
 
 .home-announcement__poster-link {
