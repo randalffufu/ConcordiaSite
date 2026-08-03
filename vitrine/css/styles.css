@@ -53,8 +53,9 @@ html,
 body {
   height: 100%;
   min-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* `clip` et non `hidden` : `overflow: hidden` sur html/body crée un conteneur
+     de défilement qui casse `position: sticky` sur le header. */
+  overflow-x: clip;
   background: var(--cream);
   color: var(--text);
   font-family: var(--font-family);
@@ -2170,13 +2171,23 @@ a {
     order: 1;
   }
 
+  /* Le header se masque en descendant et réapparaît en remontant */
+  .site-header {
+    transition: transform 0.3s ease;
+  }
+
+  .site-header--hidden {
+    transform: translateY(-100%);
+  }
+
+  /* Ancré au header (et non `fixed` à 70px) pour suivre son déplacement
+     et rester collé quelle que soit la hauteur réelle du header. */
   .nav {
-    position: fixed;
-    top: 70px;
+    position: absolute;
+    top: calc(100% + 4px);
     left: 0;
     right: 0;
     background: var(--purple);
-    border-bottom: 4px solid var(--yellow);
     flex-direction: column;
     gap: 0;
     width: 100%;
@@ -2187,8 +2198,11 @@ a {
     z-index: 999;
   }
 
+  /* La bordure jaune doit apparaître avec le menu : sur une bordure, `max-height: 0`
+     ne réduit pas les 4px, ce qui laissait une ligne jaune flottante en permanence. */
   .nav.active {
-    max-height: 300px;
+    max-height: 340px;
+    border-bottom: 4px solid var(--yellow);
   }
 
   .nav-link {

@@ -37,6 +37,53 @@ function initializeHamburgerMenu() {
     });
 }
 
+// ============= HEADER AUTO-MASQUÉ (MOBILE) =============
+// Sur téléphone, le header s'escamote quand on descend et revient dès qu'on
+// remonte, pour changer de page sans avoir à remonter tout le contenu.
+function initializeHeaderAutoHide() {
+    const header = document.querySelector('.site-header');
+    const navMenu = document.getElementById('navMenu');
+
+    if (!header) return;
+
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const scrollThreshold = 8; // ignore les micro-défilements qui font clignoter
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function update() {
+        ticking = false;
+        const currentY = window.scrollY;
+        const isMenuOpen = navMenu && navMenu.classList.contains('active');
+
+        // Toujours visible sur desktop, en haut de page, ou menu ouvert
+        if (!mobileQuery.matches || currentY <= header.offsetHeight || isMenuOpen) {
+            header.classList.remove('site-header--hidden');
+            lastScrollY = currentY;
+            return;
+        }
+
+        const delta = currentY - lastScrollY;
+        if (Math.abs(delta) < scrollThreshold) return;
+
+        header.classList.toggle('site-header--hidden', delta > 0);
+        lastScrollY = currentY;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(update);
+        }
+    }, { passive: true });
+
+    // Repasser en desktop ne doit jamais laisser le header masqué
+    mobileQuery.addEventListener('change', () => {
+        header.classList.remove('site-header--hidden');
+        lastScrollY = window.scrollY;
+    });
+}
+
 function getPrivacyPolicyPath() {
     return window.location.pathname.includes('/pages/')
         ? 'politique-confidentialite.html'
