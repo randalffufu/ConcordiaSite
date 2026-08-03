@@ -49,17 +49,31 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
-  min-height: 100%;
   /* `clip` et non `hidden` : `overflow: hidden` sur html/body crée un conteneur
      de défilement qui casse `position: sticky` sur le header. */
+  overflow-x: clip;
+}
+
+body {
+  /* `height: 100%` bornerait la boîte du body à la hauteur du viewport : le
+     header sticky ne pourrait alors coller que sur le premier écran.
+     `min-height` laisse le body grandir avec le contenu. */
+  min-height: 100%;
   overflow-x: clip;
   background: var(--cream);
   color: var(--text);
   font-family: var(--font-family);
   line-height: var(--line-height);
+}
+
+/* Le header est injecté dans ce conteneur, dont la hauteur est exactement celle
+   du header : un élément sticky ne peut pas sortir de son parent, il n'avait donc
+   aucune marge de déplacement. `display: contents` efface la boîte du conteneur
+   et rattache le header au body. */
+#header-placeholder {
+  display: contents;
 }
 
 a {
