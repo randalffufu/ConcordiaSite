@@ -60,6 +60,7 @@ async function loadComponents() {
       fixLinkPaths(basePath);
       initializeThemeToggle();
       initializeHamburgerMenu();
+      initializeHeaderAutoHide();
       highlightCurrentPage();
     }
   } catch (error) {
