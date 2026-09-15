@@ -165,7 +165,17 @@ a {
   color: var(--yellow);
 }
 
-<<<<<<< HEAD
+/* Mise en avant du festival en cours dans la nav */
+.nav-link--festival {
+  color: var(--yellow);
+  border-color: rgba(245, 208, 64, 0.4);
+}
+
+.nav-link--festival:hover,
+.nav-link--festival.active {
+  border-color: var(--yellow);
+}
+
 .nav-link--cta {
   background: var(--yellow);
   color: var(--purple-dark);
@@ -177,17 +187,6 @@ a {
   background: var(--pink);
   border-color: var(--pink);
   color: var(--purple-dark);
-=======
-/* Mise en avant du festival en cours dans la nav */
-.nav-link--festival {
-  color: var(--yellow);
-  border-color: rgba(245, 208, 64, 0.4);
-}
-
-.nav-link--festival:hover,
-.nav-link--festival.active {
-  border-color: var(--yellow);
->>>>>>> b941475cbe094d6c74c5192aa8d3d40ec49bf6cf
 }
 
 .hamburger-menu {
@@ -2314,12 +2313,8 @@ a {
   /* La bordure jaune doit apparaître avec le menu : sur une bordure, `max-height: 0`
      ne réduit pas les 4px, ce qui laissait une ligne jaune flottante en permanence. */
   .nav.active {
-<<<<<<< HEAD
     max-height: 400px;
-=======
-    max-height: 340px;
     border-bottom: 4px solid var(--yellow);
->>>>>>> b941475cbe094d6c74c5192aa8d3d40ec49bf6cf
   }
 
   .nav-link {
