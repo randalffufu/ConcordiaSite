@@ -150,6 +150,19 @@ a {
   color: var(--yellow);
 }
 
+.nav-link--cta {
+  background: var(--yellow);
+  color: var(--purple-dark);
+  border: 2px solid var(--yellow);
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.nav-link--cta:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: var(--purple-dark);
+}
+
 .hamburger-menu {
   display: none;
   flex-direction: column;
@@ -609,6 +622,91 @@ a {
   color: var(--purple-dark);
   transform: translateY(-3px);
   box-shadow: 4px 4px 0 var(--purple);
+}
+
+.btn-cta--secondary {
+  background: var(--yellow);
+  border-color: var(--purple);
+  color: var(--purple-dark);
+}
+
+.btn-cta--secondary:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: var(--white);
+}
+
+.btn-cta--ghost {
+  background: transparent;
+  color: var(--purple);
+}
+
+.contact-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+/* ============= NOUS SOUTENIR (HelloAsso) ============= */
+.support {
+  /* Décale l'ancre #soutenir pour ne pas passer sous le header sticky */
+  scroll-margin-top: 100px;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-3xl);
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  background: var(--white);
+  border: 3px solid var(--purple);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+  transition: var(--transition);
+}
+
+.support-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 var(--purple);
+}
+
+.support-card__badge {
+  background: var(--purple);
+  color: var(--yellow);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  padding: 5px 14px;
+}
+
+.support-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: var(--purple);
+}
+
+.support-card p {
+  color: var(--text);
+  flex-grow: 1;
+}
+
+.support-card__btn {
+  margin-top: var(--spacing-xs);
+}
+
+.support-note {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--purple-mid);
 }
 
 /* ============= FOOTER ============= */
@@ -1849,7 +1947,7 @@ a {
   }
 
   .nav.active {
-    max-height: 300px;
+    max-height: 400px;
   }
 
   .nav-link {
